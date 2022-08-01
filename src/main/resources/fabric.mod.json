@@ -3,10 +3,10 @@
   "id": "lightmeal",
   "version": "${version}",
 
-  "name": "light meal",
-  "description": "mm... torches...",
+  "name": "gem eating",
+  "description": "mm... amethyst...",
   "authors": [
-    "miir"
+    "miir", "ifritdiezel"
   ],
   "contact": {
     "homepage": "https://github.com/itsmiir/",
