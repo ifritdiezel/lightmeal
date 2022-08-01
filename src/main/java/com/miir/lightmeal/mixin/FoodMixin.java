@@ -13,14 +13,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class FoodMixin {
     @Inject(method = "isFood", at = @At("HEAD"), cancellable = true)
     private void mixin(CallbackInfoReturnable<Boolean> cir) {
-        if ((((Item)(Object) this) == Items.AMETHYST_SHARD){
+        if (((Item)(Object) this) == Items.AMETHYST_SHARD){
             cir.setReturnValue(true);
         }
 
     }
     @Inject(method = "getFoodComponent", at = @At("HEAD"), cancellable = true)
     private void foodCompMixin(CallbackInfoReturnable<FoodComponent> cir) {
-                if ((((Item)(Object) this) == Items.AMETHYST_SHARD){
+                if (((Item)(Object) this) == Items.AMETHYST_SHARD){
                     FoodComponent.Builder component = new FoodComponent.Builder();
                     cir.setReturnValue(component.hunger(4).snack().build());
                 }
