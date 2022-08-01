@@ -13,27 +13,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class FoodMixin {
     @Inject(method = "isFood", at = @At("HEAD"), cancellable = true)
     private void mixin(CallbackInfoReturnable<Boolean> cir) {
-        if (((Item)(Object) this) instanceof BlockItem) {
-            BlockItem item = ((BlockItem)(Object) this);
-            Block block = item.getBlock();
-            if (block.getDefaultState().getLuminance() > 0) {
-                cir.setReturnValue(true);
-            }
-        } else {
-            cir.setReturnValue(false);
+        if ((((Item)(Object) this) == Items.AMETHYST_SHARD){
+            cir.setReturnValue(true);
         }
+
     }
     @Inject(method = "getFoodComponent", at = @At("HEAD"), cancellable = true)
     private void foodCompMixin(CallbackInfoReturnable<FoodComponent> cir) {
-        if (((Item)(Object) this) instanceof BlockItem) {
-            BlockItem item = ((BlockItem)(Object) this);
-            Block block = item.getBlock();
-            int l = block.getDefaultState().getLuminance();
-            if (l > 0) {
-                FoodComponent.Builder component = new FoodComponent.Builder();
-                cir.setReturnValue(component.hunger(((int) Math.round(l / 5.0))).snack().build());
-            }
-        }
+                if ((((Item)(Object) this) == Items.AMETHYST_SHARD){
+                    FoodComponent.Builder component = new FoodComponent.Builder();
+                    cir.setReturnValue(component.hunger(4).snack().build());
+                }
+
     }
 
 }
